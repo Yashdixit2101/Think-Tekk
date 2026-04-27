@@ -1,0 +1,72 @@
+/* =============================================
+   RESPONSIVE — responsive.css
+   ============================================= */
+
+/* Tablet */
+@media (max-width: 900px) {
+  .contact-inner { grid-template-columns: 1fr; }
+  .about-inner   { flex-direction: column; }
+  .about-highlights { flex: unset; width: 100%; }
+  .why-grid { grid-template-columns: 1fr 1fr; }
+  .why-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .why-item:last-child { border-bottom: none; }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  /* Navbar */
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background: var(--black);
+    padding: 16px 5%;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    font-size: 15px;
+  }
+  .nav-links a:last-child { border-bottom: none; }
+  .nav-hamburger { display: flex; }
+  .nav-cta { display: none; }
+
+  /* Hero */
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 60px 5% 52px;
+    gap: 36px;
+  }
+  .hero h1 { font-size: 34px; }
+  .hero-sub { font-size: 15px; margin-left: auto; margin-right: auto; }
+  .hero-btns { justify-content: center; }
+  .hero-visual { display: none; }
+
+  /* Stats */
+  .stats-bar { flex-wrap: wrap; }
+  .stat {
+    flex: 0 0 50%;
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+  }
+  .stat:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.2); }
+  .stat:nth-last-child(-n+2) { border-bottom: none; }
+
+  /* Section titles */
+  .section-title { font-size: 30px; }
+  .services-header { flex-direction: column; align-items: flex-start; }
+
+  /* Why grid */
+  .why-grid { grid-template-columns: 1fr; }
+
+  /* Footer */
+  .footer-top { flex-direction: column; gap: 32px; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; gap: 8px; }
+}
