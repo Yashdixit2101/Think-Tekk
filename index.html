@@ -4,7 +4,27 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ThinkTekk – Where Thinking Meets Technology</title>
-  <link rel="icon" href="asset/thinktekklogo.jpeg" type="image/jpeg" />
+
+  <!-- SEO -->
+  <meta name="description" content="ThinkTekk provides software development, cloud solutions, AI automation, and IT consulting services in Jaipur." />
+  <meta name="keywords" content="IT company Jaipur, software development India, cloud services, AI automation" />
+  <meta name="author" content="ThinkTekk" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="ThinkTekk – Where Thinking Meets Technology" />
+  <meta property="og:description" content="We build scalable, secure, and high-performance technology solutions." />
+  <meta property="og:image" content="https://www.thinktekk.com/asset/thinktekklogo.jpeg" />
+  <meta property="og:url" content="https://www.thinktekk.com" />
+  <meta property="og:type" content="website" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://www.thinktekk.com/" />
+
+  <!-- Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet" />
 
   <!-- Component Styles -->
@@ -19,13 +39,33 @@
   <link rel="stylesheet" href="css/contact.css" />
   <link rel="stylesheet" href="css/footer.css" />
   <link rel="stylesheet" href="css/responsive.css" />
+
+  <link rel="icon" href="asset/thinktekklogo.jpeg" type="image/jpeg" />
+
+  <!-- SCHEMA -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "ThinkTekk",
+    "url": "https://www.thinktekk.com",
+    "logo": "https://www.thinktekk.com/asset/thinktekklogo.jpeg",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Jaipur",
+      "addressRegion": "Rajasthan",
+      "addressCountry": "India"
+    }
+  }
+  </script>
 </head>
+
 <body>
 
   <!-- NAVBAR -->
   <nav id="navbar" class="navbar">
     <div class="nav-logo">
-      <img src="asset/thinktekklogo.jpeg" alt="ThinkTekk Logo" />
+      <img src="asset/thinktekklogo.jpeg" alt="ThinkTekk IT Company Jaipur Logo" loading="lazy" />
       <span>ThinkTekk</span>
     </div>
     <div class="nav-links" id="navLinks">
@@ -57,7 +97,7 @@
     </div>
     <div class="hero-visual">
       <div class="hero-logo-wrap">
-        <img src="asset/thinktekklogo.jpeg" alt="ThinkTekk" />
+        <img src="asset/thinktekklogo.jpeg" alt="ThinkTekk Logo" loading="lazy" />
       </div>
     </div>
   </section>
@@ -130,15 +170,15 @@
         <div class="contact-info" id="contactInfo">
           <!-- Injected by contact.js -->
         </div>
-        <div class="contact-form">
+      <div class="contact-form">
           <h3>Send Us a Message</h3>
           <div class="form-row">
             <label for="name">Full Name</label>
-            <input type="text" id="name" placeholder="Your name" />
+        <input type="text" id="name" placeholder="Your name" />
           </div>
           <div class="form-row">
             <label for="email">Email Address</label>
-            <input type="email" id="email" placeholder="your@email.com" />
+        <input type="email" id="email" placeholder="your@email.com" />
           </div>
           <div class="form-row">
             <label for="service">Service Interested In</label>
