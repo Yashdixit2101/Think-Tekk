@@ -1,253 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ThinkTekk - Where Thinking Meets Technology</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
-<style>
-  *{margin:0;padding:0;box-sizing:border-box;}
-  :root{
-    --black:#0a0a0a;--white:#ffffff;--accent:#1a6fd4;--accent-dark:#1256aa;
-    --gray-light:#f4f5f7;--gray-mid:#e0e3ea;--gray-text:#555e70;
-    --section-pad:80px 0;
-  }
-  body{font-family:'Source Sans 3',sans-serif;color:var(--black);background:var(--white);font-size:16px;line-height:1.7;}
-  a{text-decoration:none;color:inherit;}
-  nav{background:var(--black);padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:72px;position:sticky;top:0;z-index:100;}
-  .nav-logo{display:flex;align-items:center;gap:12px;}
-  .nav-logo img{height:42px;width:42px;border-radius:6px;}
-  .nav-logo span{color:var(--white);font-family:'Playfair Display',serif;font-size:22px;letter-spacing:0.5px;}
-  .nav-links{display:flex;gap:32px;}
-  .nav-links a{color:rgba(255,255,255,0.75);font-size:14px;font-weight:600;letter-spacing:0.8px;text-transform:uppercase;transition:color 0.2s;}
-  .nav-links a:hover{color:var(--white);}
-  .nav-cta{background:var(--accent);color:var(--white);padding:10px 24px;border-radius:4px;font-size:14px;font-weight:600;letter-spacing:0.5px;transition:background 0.2s;}
-  .nav-cta:hover{background:var(--accent-dark);}
-  .hero{background:var(--black);padding:100px 5% 90px;display:flex;align-items:center;gap:60px;min-height:560px;}
-  .hero-text{flex:1;}
-  .hero-eyebrow{display:inline-block;background:rgba(26,111,212,0.15);color:#5fa8f5;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:6px 16px;border-radius:3px;margin-bottom:24px;border:1px solid rgba(26,111,212,0.3);}
-  .hero h1{font-family:'Playfair Display',serif;font-size:52px;line-height:1.15;color:var(--white);margin-bottom:22px;}
-  .hero h1 em{color:#5fa8f5;font-style:normal;}
-  .hero-sub{font-size:17px;color:rgba(255,255,255,0.65);line-height:1.8;max-width:520px;margin-bottom:36px;}
-  .hero-btns{display:flex;gap:16px;flex-wrap:wrap;}
-  .btn-primary{background:var(--accent);color:var(--white);padding:14px 32px;border-radius:4px;font-weight:600;font-size:15px;transition:background 0.2s;}
-  .btn-primary:hover{background:var(--accent-dark);}
-  .btn-ghost{border:1.5px solid rgba(255,255,255,0.35);color:var(--white);padding:14px 32px;border-radius:4px;font-weight:600;font-size:15px;transition:all 0.2s;}
-  .btn-ghost:hover{border-color:var(--white);}
-  .hero-visual{flex:0 0 340px;display:flex;align-items:center;justify-content:center;}
-  .hero-logo-wrap{width:240px;height:240px;border-radius:50%;border:2px solid rgba(26,111,212,0.4);display:flex;align-items:center;justify-content:center;position:relative;}
-  .hero-logo-wrap::before{content:'';position:absolute;inset:-16px;border-radius:50%;border:1px solid rgba(26,111,212,0.15);}
-  .hero-logo-wrap img{width:180px;height:180px;border-radius:50%;}
-  .stats{background:var(--accent);padding:40px 5%;display:flex;gap:0;justify-content:center;}
-  .stat{flex:1;text-align:center;padding:16px 24px;border-right:1px solid rgba(255,255,255,0.2);}
-  .stat:last-child{border-right:none;}
-  .stat-num{font-family:'Playfair Display',serif;font-size:36px;color:var(--white);font-weight:700;}
-  .stat-label{font-size:13px;color:rgba(255,255,255,0.8);letter-spacing:0.5px;margin-top:4px;}
-  section{padding:var(--section-pad);}
-  .section-inner{max-width:1100px;margin:0 auto;padding:0 5%;}
-  .section-tag{font-size:12px;font-weight:600;letter-spacing:1.8px;text-transform:uppercase;color:var(--accent);margin-bottom:12px;}
-  .section-title{font-family:'Playfair Display',serif;font-size:38px;line-height:1.2;color:var(--black);margin-bottom:16px;}
-  .section-sub{font-size:16px;color:var(--gray-text);max-width:560px;line-height:1.8;}
-  .services{background:var(--gray-light);}
-  .services-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:52px;flex-wrap:wrap;gap:20px;}
-  .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;}
-  .service-card{background:var(--white);border:1px solid var(--gray-mid);border-radius:8px;padding:32px 28px;transition:border-color 0.2s,transform 0.2s;position:relative;overflow:hidden;}
-  .service-card:hover{border-color:var(--accent);transform:translateY(-3px);}
-  .service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent);opacity:0;transition:opacity 0.2s;}
-  .service-card:hover::before{opacity:1;}
-  .service-icon{width:48px;height:48px;background:rgba(26,111,212,0.08);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;}
-  .service-icon svg{width:24px;height:24px;stroke:var(--accent);fill:none;stroke-width:1.8;}
-  .service-card h3{font-size:17px;font-weight:600;color:var(--black);margin-bottom:10px;}
-  .service-card p{font-size:14px;color:var(--gray-text);line-height:1.75;}
-  .about{background:var(--white);}
-  .about-inner{display:flex;gap:72px;align-items:center;flex-wrap:wrap;}
-  .about-text{flex:1;min-width:280px;}
-  .about-text p{font-size:16px;color:var(--gray-text);line-height:1.85;margin-bottom:16px;}
-  .about-highlights{flex:0 0 320px;display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-  .highlight-box{background:var(--gray-light);border-radius:8px;padding:24px 20px;border-left:3px solid var(--accent);}
-  .highlight-box .num{font-family:'Playfair Display',serif;font-size:28px;color:var(--black);font-weight:700;}
-  .highlight-box .lbl{font-size:13px;color:var(--gray-text);margin-top:4px;}
-  .why{background:var(--black);padding:80px 0;}
-  .why .section-title{color:var(--white);}
-  .why .section-sub{color:rgba(255,255,255,0.6);}
-  .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2px;margin-top:52px;border:1px solid rgba(255,255,255,0.08);border-radius:8px;overflow:hidden;}
-  .why-item{padding:32px 28px;border-right:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.02);}
-  .why-item:last-child{border-right:none;}
-  .why-item h3{font-size:15px;font-weight:600;color:var(--white);margin-bottom:10px;}
-  .why-item p{font-size:13px;color:rgba(255,255,255,0.55);line-height:1.75;}
-  .why-num{font-family:'Playfair Display',serif;font-size:36px;color:rgba(26,111,212,0.5);margin-bottom:12px;line-height:1;}
-  .contact{background:var(--white);}
-  .contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
-  .contact-info h3{font-family:'Playfair Display',serif;font-size:28px;margin-bottom:16px;}
-  .contact-info p{color:var(--gray-text);font-size:15px;line-height:1.8;margin-bottom:28px;}
-  .contact-detail{display:flex;align-items:flex-start;gap:14px;margin-bottom:20px;}
-  .contact-detail svg{width:20px;height:20px;stroke:var(--accent);fill:none;stroke-width:1.8;flex-shrink:0;margin-top:3px;}
-  .contact-detail div span{display:block;font-size:12px;color:var(--gray-text);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:2px;}
-  .contact-detail div strong{font-size:15px;font-weight:600;}
-  .contact-form{background:var(--gray-light);border-radius:8px;padding:36px 32px;}
-  .contact-form h3{font-size:20px;font-weight:600;margin-bottom:24px;}
-  .form-row{margin-bottom:18px;}
-  .form-row label{display:block;font-size:13px;font-weight:600;color:var(--black);letter-spacing:0.4px;margin-bottom:6px;}
-  .form-row input,.form-row textarea,.form-row select{width:100%;background:var(--white);border:1px solid var(--gray-mid);border-radius:5px;padding:11px 14px;font-size:14px;font-family:inherit;color:var(--black);transition:border-color 0.2s;}
-  .form-row input:focus,.form-row textarea:focus,.form-row select:focus{outline:none;border-color:var(--accent);}
-  .form-row textarea{min-height:110px;resize:vertical;}
-  .form-submit{width:100%;background:var(--accent);color:var(--white);border:none;padding:14px;border-radius:5px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;transition:background 0.2s;}
-  .form-submit:hover{background:var(--accent-dark);}
-  footer{background:var(--black);padding:52px 5% 28px;}
-  .footer-top{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,0.1);}
-  .footer-brand img{height:44px;width:44px;border-radius:6px;margin-bottom:12px;}
-  .footer-brand p{font-size:13px;color:rgba(255,255,255,0.5);max-width:240px;line-height:1.75;}
-  .footer-brand .brand-name{color:var(--white);font-family:'Playfair Display',serif;font-size:18px;margin-bottom:8px;}
-  .footer-col h4{color:var(--white);font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px;}
-  .footer-col a{display:block;font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:10px;transition:color 0.2s;}
-  .footer-col a:hover{color:var(--white);}
-  .footer-bottom{padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
-  .footer-bottom p{font-size:12px;color:rgba(255,255,255,0.35);}
-  .footer-bottom a{font-size:12px;color:rgba(255,255,255,0.35);}
-  @media(max-width:768px){
-    .hero{flex-direction:column;text-align:center;padding:60px 5%;}
-    .hero h1{font-size:36px;}
-    .hero-btns{justify-content:center;}
-    .hero-visual{display:none;}
-    .stats{flex-wrap:wrap;}
-    .stat{flex:0 0 50%;border-right:none;border-bottom:1px solid rgba(255,255,255,0.2);}
-    .about-inner{flex-direction:column;}
-    .contact-inner{grid-template-columns:1fr;}
-    .why-grid{grid-template-columns:1fr 1fr;}
-    .nav-links{display:none;}
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ThinkTekk – Where Thinking Meets Technology</title>
+  <link rel="icon" href="asset/thinktekklogo.jpeg" type="image/jpeg" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet" />
+
+  <!-- Component Styles -->
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/navbar.css" />
+  <link rel="stylesheet" href="css/hero.css" />
+  <link rel="stylesheet" href="css/stats.css" />
+  <link rel="stylesheet" href="css/services.css" />
+  <link rel="stylesheet" href="css/about.css" />
+  <link rel="stylesheet" href="css/why.css" />
+  <link rel="stylesheet" href="css/contact.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
 </head>
 <body>
-<nav>
-  <div class="nav-logo">
-    <img src="asset/thinktekklogo.jpeg" alt="ThinkTekk Logo">
-    <span>ThinkTekk</span>
-  </div>
-  <div class="nav-links">
-    <a href="#services">Services</a>
-    <a href="#about">About</a>
-    <a href="#why">Why Us</a>
-    <a href="#contact">Contact</a>
-  </div>
-  <a href="#contact" class="nav-cta">Get a Quote</a>
-</nav>
-<section class="hero">
-  <div class="hero-text">
-    <div class="hero-eyebrow">IT Services & Technology Solutions</div>
-    <h1>Where <em>Thinking</em> Meets<br>Technology</h1>
-    <p class="hero-sub">We help startups, small businesses, and enterprises turn ideas into scalable, secure, and high-performance technology solutions — powered by modern engineering and creative thinking.</p>
-    <div class="hero-btns">
-      <a href="#services" class="btn-primary">Explore Services</a>
-      <a href="#contact" class="btn-ghost">Talk to Us</a>
+
+  <!-- NAVBAR -->
+  <nav id="navbar" class="navbar">
+    <div class="nav-logo">
+      <img src="asset/thinktekklogo.jpeg" alt="ThinkTekk Logo" />
+      <span>ThinkTekk</span>
     </div>
-  </div>
-  <div class="hero-visual">
-    <div class="hero-logo-wrap">
-      <img src="asset/thinktekklogo.jpeg" alt="ThinkTekk">
+    <div class="nav-links" id="navLinks">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#why">Why Us</a>
+      <a href="#contact">Contact</a>
     </div>
-  </div>
-</section>
-<div class="stats">
-  <div class="stat"><div class="stat-num">2025</div><div class="stat-label">Founded in Jaipur</div></div>
-  <div class="stat"><div class="stat-num">6+</div><div class="stat-label">Core Services</div></div>
-  <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Client-Focused</div></div>
-  <div class="stat"><div class="stat-num">10+</div><div class="stat-label">Specializations</div></div>
-</div>
-<section class="services" id="services">
-  <div class="section-inner">
-    <div class="services-header">
-      <div>
-        <div class="section-tag">What We Do</div>
-        <h2 class="section-title">Our Services</h2>
-        <p class="section-sub">End-to-end technology solutions designed to help your business grow, scale, and innovate.</p>
-      </div>
-      <a href="#contact" class="btn-primary" style="white-space:nowrap;">Start a Project</a>
-    </div>
-    <div class="services-grid">
-      <div class="service-card"><div class="service-icon"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div><h3>Software Development</h3><p>Custom software built for your unique business needs — robust, scalable, and future-ready from day one.</p></div>
-      <div class="service-card"><div class="service-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><h3>Web & Mobile App Development</h3><p>Responsive websites and native mobile apps that deliver exceptional user experiences across all platforms.</p></div>
-      <div class="service-card"><div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M4.93 4.93a10 10 0 0 0 0 14.14"/></svg></div><h3>IT Services & Consulting</h3><p>Strategic IT consulting and managed services to keep your infrastructure optimized, secure, and aligned with business goals.</p></div>
-      <div class="service-card"><div class="service-icon"><svg viewBox="0 0 24 24"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg></div><h3>Cloud & SaaS Solutions</h3><p>Migrate to the cloud, build SaaS products, or scale your infrastructure with our cloud-native expertise.</p></div>
-      <div class="service-card"><div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 8v4l3 3"/><circle cx="18" cy="6" r="3"/></svg></div><h3>AI & Automation</h3><p>Intelligent AI-powered products and workflow automation to boost efficiency and unlock new business opportunities.</p></div>
-      <div class="service-card"><div class="service-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><h3>Digital Transformation</h3><p>End-to-end digital transformation strategy and execution — modernizing your business for the digital era.</p></div>
-    </div>
-  </div>
-</section>
-<section class="about" id="about">
-  <div class="section-inner">
-    <div class="about-inner">
-      <div class="about-text">
-        <div class="section-tag">Who We Are</div>
-        <h2 class="section-title">Technology with Purpose</h2>
-        <p>ThinkTekk is a technology-driven company based in Jaipur, Rajasthan, focused on delivering smart, reliable, and future-ready digital solutions. We combine creative thinking, modern engineering, and a deep understanding of business to solve real-world problems.</p>
-        <p>Founded in 2025, our team serves startups, small businesses, and enterprises — helping them navigate digital transformation and emerge stronger, faster, and more competitive in their markets.</p>
-        <p>We believe great technology starts with great thinking. Every solution we build is designed to drive growth, efficiency, and long-term innovation for our clients.</p>
-        <a href="#contact" class="btn-primary" style="display:inline-block;margin-top:8px;">Work With Us</a>
-      </div>
-      <div class="about-highlights">
-        <div class="highlight-box"><div class="num">10+</div><div class="lbl">Specializations</div></div>
-        <div class="highlight-box"><div class="num">2025</div><div class="lbl">Established</div></div>
-        <div class="highlight-box"><div class="num">6</div><div class="lbl">Core Services</div></div>
-        <div class="highlight-box"><div class="num">Jaipur</div><div class="lbl">Headquarters</div></div>
+    <a href="#contact" class="nav-cta">Get a Quote</a>
+    <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-text">
+      <div class="hero-eyebrow">IT Services &amp; Technology Solutions</div>
+      <h1>Where <em>Thinking</em> Meets<br />Technology</h1>
+      <p class="hero-sub">
+        We help startups, small businesses, and enterprises turn ideas into
+        scalable, secure, and high-performance technology solutions — powered
+        by modern engineering and creative thinking.
+      </p>
+      <div class="hero-btns">
+        <a href="#services" class="btn-primary">Explore Services</a>
+        <a href="#contact" class="btn-ghost">Talk to Us</a>
       </div>
     </div>
-  </div>
-</section>
-<section class="why" id="why">
-  <div class="section-inner">
-    <div class="section-tag" style="color:#5fa8f5;">Why ThinkTekk</div>
-    <h2 class="section-title">Built Different</h2>
-    <p class="section-sub">We don't just deliver code — we deliver outcomes. Here's what sets us apart.</p>
-    <div class="why-grid">
-      <div class="why-item"><div class="why-num">01</div><h3>Custom-First Approach</h3><p>No templates, no shortcuts. Every solution is crafted specifically for your business needs and goals.</p></div>
-      <div class="why-item"><div class="why-num">02</div><h3>Scalable Architecture</h3><p>We build for where you're going, not just where you are — with infrastructure that grows with you.</p></div>
-      <div class="why-item"><div class="why-num">03</div><h3>Business Understanding</h3><p>Our team bridges technology and business — ensuring solutions create measurable real-world value.</p></div>
-      <div class="why-item"><div class="why-num">04</div><h3>Startup to Enterprise</h3><p>Whether you're a founder or an established enterprise, our solutions are tailored to your stage and scale.</p></div>
-    </div>
-  </div>
-</section>
-<section class="contact" id="contact">
-  <div class="section-inner">
-    <div style="text-align:center;margin-bottom:52px;">
-      <div class="section-tag">Get In Touch</div>
-      <h2 class="section-title">Let's Build Something Great</h2>
-      <p class="section-sub" style="margin:0 auto;">Have a project in mind? Tell us about it and we'll get back to you within 24 hours.</p>
-    </div>
-    <div class="contact-inner">
-      <div class="contact-info">
-        <h3>Contact Information</h3>
-        <p>Ready to transform your business with technology? Reach out to us — we'd love to hear about your project.</p>
-        <div class="contact-detail"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><div><span>Address</span><strong>Shri Ram Vihar, Plot No. 180<br>Jaipur, Rajasthan 302033, IN</strong></div></div>
-        <div class="contact-detail"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.22a2 2 0 0 1 1.99-2.18H6.6a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.06 6.06l.94-.94a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><div><span>Phone</span><strong>+91 9079746798</strong></div></div>
-        <div class="contact-detail"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><div><span>Website</span><strong><a href="https://www.thinktekk.com" style="color:#1a6fd4;">www.thinktekk.com</a></strong></div></div>
-      </div>
-      <div class="contact-form">
-        <h3>Send Us a Message</h3>
-        <div class="form-row"><label>Full Name</label><input type="text" placeholder="Your name"></div>
-        <div class="form-row"><label>Email Address</label><input type="email" placeholder="your@email.com"></div>
-        <div class="form-row"><label>Service Interested In</label><select><option value="">Select a service...</option><option>Software Development</option><option>Web & Mobile App Development</option><option>IT Services & Consulting</option><option>Cloud & SaaS Solutions</option><option>AI & Automation</option><option>Digital Transformation</option></select></div>
-        <div class="form-row"><label>Message</label><textarea placeholder="Tell us about your project..."></textarea></div>
-        <button class="form-submit">Send Message →</button>
+    <div class="hero-visual">
+      <div class="hero-logo-wrap">
+        <img src="asset/thinktekklogo.jpeg" alt="ThinkTekk" />
       </div>
     </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stat"><span class="stat-num">2025</span><span class="stat-label">Founded in Jaipur</span></div>
+    <div class="stat"><span class="stat-num">6+</span><span class="stat-label">Core Services</span></div>
+    <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Client-Focused</span></div>
+    <div class="stat"><span class="stat-num">10+</span><span class="stat-label">Specializations</span></div>
   </div>
-</section>
-<footer>
-  <div class="footer-top">
-    <div class="footer-brand">
-      <img src="asset/thinktekklogo.jpeg" alt="ThinkTekk">
-      <div class="brand-name">ThinkTekk</div>
-      <p>Where Thinking Meets Technology. Building smart, reliable, and future-ready technology solutions.</p>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="section-inner">
+      <div class="services-header">
+        <div>
+          <p class="section-tag">What We Do</p>
+          <h2 class="section-title">Our Services</h2>
+          <p class="section-sub">End-to-end technology solutions designed to help your business grow, scale, and innovate.</p>
+        </div>
+        <a href="#contact" class="btn-primary">Start a Project</a>
+      </div>
+      <div class="services-grid" id="servicesGrid">
+        <!-- Injected by services.js -->
+      </div>
     </div>
-    <div class="footer-col"><h4>Services</h4><a href="#services">Software Development</a><a href="#services">Web & Mobile Apps</a><a href="#services">IT Consulting</a><a href="#services">Cloud & SaaS</a><a href="#services">AI & Automation</a></div>
-    <div class="footer-col"><h4>Company</h4><a href="#about">About Us</a><a href="#why">Why ThinkTekk</a><a href="#contact">Contact</a></div>
-    <div class="footer-col"><h4>Contact</h4><a href="tel:+919079746798">+91 9079746798</a><a href="https://www.thinktekk.com">www.thinktekk.com</a><a>Jaipur, Rajasthan</a></div>
-  </div>
-  <div class="footer-bottom">
-    <p>© 2025 ThinkTekk. All rights reserved.</p>
-    <a href="#">Privacy Policy</a>
-  </div>
-</footer>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="section-inner">
+      <div class="about-inner">
+        <div class="about-text">
+          <p class="section-tag">Who We Are</p>
+          <h2 class="section-title">Technology with Purpose</h2>
+          <p>ThinkTekk is a technology-driven company based in Jaipur, Rajasthan, focused on delivering smart, reliable, and future-ready digital solutions. We combine creative thinking, modern engineering, and a deep understanding of business to solve real-world problems.</p>
+          <p>Founded in 2025, our team serves startups, small businesses, and enterprises — helping them navigate digital transformation and emerge stronger, faster, and more competitive in their markets.</p>
+          <p>We believe great technology starts with great thinking. Every solution we build is designed to drive growth, efficiency, and long-term innovation.</p>
+          <a href="#contact" class="btn-primary">Work With Us</a>
+        </div>
+        <div class="about-highlights" id="aboutHighlights">
+          <!-- Injected by about.js -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="why" id="why">
+    <div class="section-inner">
+      <p class="section-tag accent-blue">Why ThinkTekk</p>
+      <h2 class="section-title light">Built Different</h2>
+      <p class="section-sub light">We don't just deliver code — we deliver outcomes. Here's what sets us apart.</p>
+      <div class="why-grid" id="whyGrid">
+        <!-- Injected by why.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="section-inner">
+      <div class="contact-header">
+        <p class="section-tag">Get In Touch</p>
+        <h2 class="section-title">Let's Build Something Great</h2>
+        <p class="section-sub centered">Have a project in mind? Tell us about it and we'll get back to you within 24 hours.</p>
+      </div>
+      <div class="contact-inner">
+        <div class="contact-info" id="contactInfo">
+          <!-- Injected by contact.js -->
+        </div>
+        <div class="contact-form">
+          <h3>Send Us a Message</h3>
+          <div class="form-row">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" placeholder="Your name" />
+          </div>
+          <div class="form-row">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="your@email.com" />
+          </div>
+          <div class="form-row">
+            <label for="service">Service Interested In</label>
+            <select id="service">
+              <option value="">Select a service...</option>
+              <option>Software Development</option>
+              <option>Web &amp; Mobile App Development</option>
+              <option>IT Services &amp; Consulting</option>
+              <option>Cloud &amp; SaaS Solutions</option>
+              <option>AI &amp; Automation</option>
+              <option>Digital Transformation</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="message">Message</label>
+            <textarea id="message" placeholder="Tell us about your project..."></textarea>
+          </div>
+          <button class="form-submit" id="formSubmit">Send Message →</button>
+          <p class="form-feedback" id="formFeedback"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="asset/thinktekklogo.jpeg" alt="ThinkTekk" />
+        <p class="brand-name">ThinkTekk</p>
+        <p>Where Thinking Meets Technology. Building smart, reliable, and future-ready technology solutions from Jaipur.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="#services">Software Development</a>
+        <a href="#services">Web &amp; Mobile Apps</a>
+        <a href="#services">IT Consulting</a>
+        <a href="#services">Cloud &amp; SaaS</a>
+        <a href="#services">AI &amp; Automation</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#about">About Us</a>
+        <a href="#why">Why ThinkTekk</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="tel:+919079746798">+91 9079746798</a>
+        <a href="https://www.thinktekk.com">www.thinktekk.com</a>
+        <a>Jaipur, Rajasthan</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 ThinkTekk. All rights reserved.</p>
+      <a href="#">Privacy Policy</a>
+    </div>
+  </footer>
+
+  <!-- Component Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/services.js"></script>
+  <script src="js/about.js"></script>
+  <script src="js/why.js"></script>
+  <script src="js/contact.js"></script>
+  <script src="js/form.js"></script>
+  <script src="js/animations.js"></script>
 </body>
 </html>
