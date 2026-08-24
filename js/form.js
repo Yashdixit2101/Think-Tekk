@@ -1,5 +1,5 @@
 /* =============================================
-   FORM.JS — contact form validation & submit
+   FORM.JS — contact form opens a pre-filled email
    ============================================= */
 (function () {
   const btn      = document.getElementById('formSubmit');
@@ -17,7 +17,7 @@
 
   function setFeedback(msg, type) {
     feedback.textContent = msg;
-    feedback.className   = 'form-feedback ' + type;
+    feedback.className = 'form-feedback ' + type;
   }
 
   function highlightError(el) {
@@ -26,49 +26,28 @@
   }
 
   btn.addEventListener('click', () => {
-    const name    = fields.name.value.trim();
-    const email   = fields.email.value.trim();
+    const name = fields.name.value.trim();
+    const email = fields.email.value.trim();
     const service = fields.service.value;
     const message = fields.message.value.trim();
 
-    /* Validate */
     let valid = true;
-    if (!name)               { highlightError(fields.name);    valid = false; }
-    if (!isValidEmail(email)){ highlightError(fields.email);   valid = false; }
-    if (!service)            { highlightError(fields.service); valid = false; }
-    if (!message)            { highlightError(fields.message); valid = false; }
+    if (!name) { highlightError(fields.name); valid = false; }
+    if (!isValidEmail(email)) { highlightError(fields.email); valid = false; }
+    if (!service) { highlightError(fields.service); valid = false; }
+    if (!message) { highlightError(fields.message); valid = false; }
 
     if (!valid) {
       setFeedback('Please fill in all fields correctly.', 'error');
       return;
     }
 
-    /* Simulate submission (replace with your backend / Formspree endpoint) */
-    btn.disabled = true;
-    btn.textContent = 'Sending...';
+    const subject = encodeURIComponent(`ThinkTekk Website Enquiry - ${service}`);
+    const body = encodeURIComponent(
+      `Name: ${name}\nEmail: ${email}\nService: ${service}\n\nMessage:\n${message}`
+    );
 
-    setTimeout(() => {
-      setFeedback('Thank you! We\'ll be in touch within 24 hours.', 'success');
-      btn.textContent = 'Message Sent ✓';
-      Object.values(fields).forEach(f => { f.value = ''; f.style.borderColor = ''; });
-      setTimeout(() => {
-        btn.disabled    = false;
-        btn.textContent = 'Send Message →';
-        feedback.textContent = '';
-        feedback.className   = 'form-feedback';
-      }, 5000);
-    }, 1200);
-
-    /*
-     * TO CONNECT A REAL BACKEND replace the setTimeout above with:
-     *
-     * fetch('https://formspree.io/f/YOUR_ID', {
-     *   method: 'POST',
-     *   headers: { 'Content-Type': 'application/json' },
-     *   body: JSON.stringify({ name, email, service, message })
-     * })
-     * .then(r => r.ok ? success() : fail())
-     * .catch(() => fail());
-     */
+    window.location.href = `mailto:info@thinktekk.com?subject=${subject}&body=${body}`;
+    setFeedback('Opening your email app to send the message to info@thinktekk.com.', 'success');
   });
 })();
