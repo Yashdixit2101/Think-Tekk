@@ -1,28 +1,28 @@
 /* =============================================
-   FORM.JS — contact form opens a pre-filled email
+   FORM.JS — contact form delivery
    ============================================= */
 (function () {
-  const btn      = document.getElementById('formSubmit');
+  const btn = document.getElementById('formSubmit');
   const feedback = document.getElementById('formFeedback');
-  const fields   = {
-    name:    document.getElementById('name'),
-    email:   document.getElementById('email'),
+  const fields = {
+    name: document.getElementById('name'),
+    email: document.getElementById('email'),
     service: document.getElementById('service'),
     message: document.getElementById('message')
   };
 
-  function isValidEmail(v) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+  function isValidEmail(value) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
   }
 
-  function setFeedback(msg, type) {
-    feedback.textContent = msg;
+  function setFeedback(message, type) {
+    feedback.textContent = message;
     feedback.className = 'form-feedback ' + type;
   }
 
-  function highlightError(el) {
-    el.style.borderColor = '#c62828';
-    el.addEventListener('input', () => { el.style.borderColor = ''; }, { once: true });
+  function highlightError(element) {
+    element.style.borderColor = '#c62828';
+    element.addEventListener('input', () => { element.style.borderColor = ''; }, { once: true });
   }
 
   btn.addEventListener('click', () => {
@@ -42,12 +42,34 @@
       return;
     }
 
-    const subject = encodeURIComponent(`ThinkTekk Website Enquiry - ${service}`);
-    const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nService: ${service}\n\nMessage:\n${message}`
-    );
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
 
-    window.location.href = `mailto:info@thinktekk.com?subject=${subject}&body=${body}`;
-    setFeedback('Opening your email app to send the message to info@thinktekk.com.', 'success');
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = 'https://formsubmit.co/info@thinktekk.com';
+    form.style.display = 'none';
+
+    const values = {
+      name,
+      email,
+      service,
+      message,
+      _subject: `New ThinkTekk Website Enquiry - ${service}`,
+      _captcha: 'false',
+      _template: 'table'
+    };
+
+    Object.entries(values).forEach(([key, value]) => {
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = key;
+      input.value = value;
+      form.appendChild(input);
+    });
+
+    document.body.appendChild(form);
+    setFeedback('Sending your enquiry to info@thinktekk.com…', 'success');
+    form.submit();
   });
 })();
