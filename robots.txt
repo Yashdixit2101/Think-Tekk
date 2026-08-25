@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://www.thinktekk.com/sitemap.xml
+
+Sitemap: https://thinktekk.com/sitemap.xml
