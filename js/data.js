@@ -11,7 +11,7 @@ const SITE_DATA = {
     { title: "Digital Transformation", desc: "End-to-end digital transformation strategy and execution — modernizing your business for the digital era.", icon: `<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>` }
   ],
   highlights: [
-    { num: "2025", lbl: "Established" },
+    { num: "Ideas", lbl: "Turned Into Digital Products" },
     { num: "AI", lbl: "Intelligent Automation" },
     { num: "Cloud", lbl: "Built to Scale" },
     { num: "360°", lbl: "Technology Partnership" }
